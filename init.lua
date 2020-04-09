@@ -1,4 +1,4 @@
-math.randomseed(os.time())
+--wsor mines mod
 
 minetest.register_node(
     "wsor_mines:mine",
@@ -16,7 +16,16 @@ minetest.register_node(
         --light_source = 13,
         groups = {cracky = 3, wood = 1},
         sounds = default.node_sound_wood_defaults(),
-        drop = "wsor_mines:mine"
+        drop = "wsor_mines:mine",
+        on_punch = function(item, user, pointed_thing)
+            minetest.chat_send_all("test1")
+            minetest.after(
+                10,
+                function()
+                    minetest.chat_send_all("test3")
+                end
+            )
+        end
     }
 )
 
